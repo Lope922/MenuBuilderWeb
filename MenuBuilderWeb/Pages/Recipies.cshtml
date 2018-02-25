@@ -1,0 +1,22 @@
+﻿@page
+@model MenuBuilderWeb.Pages.RecipiesModel
+@{
+    ViewData["Title"] = "Recipies";
+}
+
+<div class="row">
+<h1 class="display-2">Recipies</h1>
+<table class="table">
+    <thead class="thead-inverse">
+        <tr><th>Meal type</th></tr>
+    </thead>
+    <tbody>
+        @foreach (string name in Model.Recipies)
+        {
+            <tr><td>@name</td></tr>
+        }
+    </tbody>
+</table>
+</div>
+
+
