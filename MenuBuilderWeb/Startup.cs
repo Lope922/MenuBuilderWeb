@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using MenuBuilderContextLib;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+
 
 namespace MenuBuilderWeb
 {
@@ -16,10 +19,13 @@ namespace MenuBuilderWeb
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddMvc(); 
+            services.AddMvc();
 
-
+            services.AddDbContext<MenuBuilder>(options => options.UseSqlServer(
+                "Server=DESKTOP-6OALC60//SQLEXPRESS;Database=Northwind;Trusted_Connection = True; MultipleActiveResultSets = true"));
         }
+
+    
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
